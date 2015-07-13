@@ -29,6 +29,16 @@ angular
         controller: 'AboutCtrl',
         controllerAs: 'about'
       })
+      .when('/contacts', {
+        templateUrl: 'views/contacts.html',
+        controller: 'ContactsCtrl',
+        controllerAs: 'contacts'
+      })
+      .when('/alarm', {
+        templateUrl: 'views/alarm.html',
+        controller: 'AlarmCtrl',
+        controllerAs: 'alarm'
+      })
       .otherwise({
         redirectTo: '/'
       });
