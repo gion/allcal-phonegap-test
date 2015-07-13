@@ -134,4 +134,10 @@
         <allow-intent href="itms-apps:*" />
     </platform>
 
+  	<feature name="http://api.phonegap.com/1.0/network" />
+    <feature name="http://api.phonegap.com/1.0/device" />
+    <feature name="http://api.phonegap.com/1.0/contacts" />
+    <feature name="http://api.phonegap.com/1.0/geolocation" />
+    <feature name="http://api.phonegap.com/1.0/notification" />
+
 </widget>
