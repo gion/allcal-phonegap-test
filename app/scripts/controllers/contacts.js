@@ -70,6 +70,6 @@ angular.module('allcalPhonegapTestApp')
 
     vm.select = function(contact) {
       vm.selectedContact = contact;
-      vm.searchedContact = vm.selectedContact.displayName;
+      // vm.searchedContact = vm.selectedContact.displayName;
     };
   });
