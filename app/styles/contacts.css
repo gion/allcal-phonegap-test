@@ -1,0 +1,13 @@
+.contacts-wrapper {
+  overflow: auto;
+  max-height: 400px;
+}
+
+.contact {
+    border: 1px solid rgba(0, 0, 0, 0.25);
+    transition: all 300ms ease-in-out;
+}
+.contact:hover, .contact:active {
+    background-color: rgba(0, 0, 0, 0.25);
+    box-shadow: 0 0 5px #000;
+}

@@ -14,6 +14,14 @@ angular.module('allcalPhonegapTestApp')
 
     self.find = findContacts;
 
+    self.getAllContacts = function getAllContacts(success, fail) {
+      var options = new ContactFindOptions();
+      options.multiple = true;
+      options.filter = '';
+
+      navigator.contacts.find(['displayName', 'name'], success, fail, options);
+    };
+
     function findContacts(query) {
       if(self.defer) {
         self.defer.reject('another query has been trigggered');
