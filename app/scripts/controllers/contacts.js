@@ -41,6 +41,8 @@ angular.module('allcalPhonegapTestApp')
         return;
       }
 
+      vm.selectedContact = null;
+
       vm.contactList = vm.allContactsList.filter(function(contact) {
         var models = [contact.displayName];
 
