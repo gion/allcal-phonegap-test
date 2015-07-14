@@ -1,1 +1,44 @@
-<p>This is the alarm view.</p>
+<h2>Configure your alarms!</h2>
+
+<div ng-repeat="a in alarm.alarms track by a.id" class="alarm-container">
+  <span class="btn btn-small remove-alarm" ng-click="alarm.removeAlarm(a);">
+    <span class="glyphicon glyphicon-remove"></span>
+  </span>
+  <div class="row">
+    <div class="col-lg-6">
+      <div class="input-group">
+        <span class="input-group-addon">
+          <span class="glyphicon glyphicon-tag"></span>
+        </span>
+        <input type="text" class="form-control" ng-model="a.name" placeholder="alarm name">
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <div class="input-group">
+        <span class="input-group-addon">
+          <span class="glyphicon glyphicon-calendar"></span>
+        </span>
+        <input type="date" class="form-control" ng-model="a.date">
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <div class="input-group">
+        <span class="input-group-addon">
+          <span class="glyphicon glyphicon-time"></span>
+        </span>
+        <input type="time" class="form-control" ng-model="a.date">
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <div class="input-group">
+        <span class="input-group-addon">
+          <input type="checkbox" ng-model="a.enabled">
+        </span>
+        <input type="text" class="form-control" disabled="disabled" ng-model="a.enabledText">
+      </div>
+    </div>
+  </div>
+</div>
+<button class="btn btn-success" ng-click="alarm.createAlarm();">
+  <span class="glyphicon glyphicon-plus"></span> add an<span ng-show="alarm.alarms.length > 0">other</span> alarm
+</button>
