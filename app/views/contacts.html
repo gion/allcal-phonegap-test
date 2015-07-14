@@ -1,1 +1,21 @@
-<p>This is the contacts view.</p>
+<h2>Search for a contact!</h2>
+<autocomplete
+  ng-model="contacts.searchedContact"
+  data="contacts.contacts"
+  on-type="contacts.search"
+  on-select="contacts.select"
+  attr-placeholder="Search your phone contacts"
+  >
+</autocomplete>
+{{contacts.selectedContact}}
+<div class="panel panel-default" ng-if="contacts.selectedContact">
+  <div class="panel-body">
+    <p>Do you want to give <strong>{{contacts.selectedContact.displayName}}</strong> a call?</p>
+    <p>
+      <a ng-href="tel://{{contacts.selectedContact.phoneNumbers[0]}}" class="btn btn-success btn-large">
+        {{contacts.selectedContact.displayName}}
+        <span class="glyphicon glyphicon-earphone"></span>
+      </a>
+    </p>
+  </div>
+</div>
