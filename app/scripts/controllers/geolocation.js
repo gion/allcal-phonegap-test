@@ -48,7 +48,7 @@ angular.module('allcalPhonegapTestApp')
         });
     };
 
-    // phonegapReady(function() {
+    function init() {
       console.log('phonegap reaaaaady!');
 
       initialize();
@@ -71,5 +71,7 @@ angular.module('allcalPhonegapTestApp')
             geolocation.loading = false;
           });
       });
-    // });
+    });
+
+    phonegapReady(init);
   });
