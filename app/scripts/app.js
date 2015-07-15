@@ -16,7 +16,8 @@ angular
     'ngRoute',
     'ngSanitize',
     'ngTouch',
-    'ngMap'
+    'ngMap',
+    'btford.phonegap.ready'
   ])
   .config(function ($routeProvider) {
     $routeProvider
