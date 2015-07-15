@@ -12,6 +12,15 @@ angular.module('allcalPhonegapTestApp')
     var geolocation = this,
         timeout;
 
+
+    var map;
+    function initialize() {
+      map = new google.maps.Map(document.getElementById('map-canvas'), {
+        zoom: 8,
+        center: {lat: -34.397, lng: 150.644}
+      });
+    }
+
     geolocation.loading = true;
     geolocation.error = null;
     geolocation.selectedAddress = null;
@@ -39,15 +48,20 @@ angular.module('allcalPhonegapTestApp')
         });
     };
 
-    phonegapReady(function() {
+    // phonegapReady(function() {
+      console.log('phonegap reaaaaady!');
+
+      initialize();
+
       $scope.$on('mapInitialized', function(event, map) {
         geolocation.map = map;
-        console.log('mapInitialized', event, map);
 
+        console.log('mapInitialized', event, map);
 
         geocoder.getCurrentPosition()
           .then(function(position) {
             geolocation.map.setCenter(position);
+            map.setCenter(position);
           })
           .catch(function(errorMessage) {
             throw new Error(errorMessage);
@@ -57,5 +71,5 @@ angular.module('allcalPhonegapTestApp')
             geolocation.loading = false;
           });
       });
-    });
+    // });
   });
