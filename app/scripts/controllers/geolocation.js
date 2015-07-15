@@ -71,7 +71,7 @@ angular.module('allcalPhonegapTestApp')
             geolocation.loading = false;
           });
       });
-    });
+    };
 
     phonegapReady(init);
   });
