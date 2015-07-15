@@ -8,7 +8,7 @@
  * Controller of the allcalPhonegapTestApp
  */
 angular.module('allcalPhonegapTestApp')
-  .controller('GeolocationCtrl', function (NavigatorGeolocation, geocoder, $timeout) {
+  .controller('GeolocationCtrl', function ($scope, phonegapReady, geocoder, $timeout) {
     var geolocation = this,
         timeout;
 
@@ -39,12 +39,23 @@ angular.module('allcalPhonegapTestApp')
         });
     };
 
-    NavigatorGeolocation.getCurrentPosition()
-      .then(function(position) {
-        // console.log(arguments);
-        geolocation.position = angular.toJson(position);
-      })
-      .finally(function() {
-        geolocation.loading = false;
+    phonegapReady(function() {
+      $scope.$on('mapInitialized', function(event, map) {
+        geolocation.map = map;
+        console.log('mapInitialized', event, map);
+
+
+        geocoder.getCurrentPosition()
+          .then(function(position) {
+            geolocation.map.setCenter(position);
+          })
+          .catch(function(errorMessage) {
+            throw new Error(errorMessage);
+            geolocation.error = errorMessage;
+          })
+          .finally(function() {
+            geolocation.loading = false;
+          });
       });
+    });
   });
