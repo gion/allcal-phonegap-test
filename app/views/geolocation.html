@@ -1,0 +1,10 @@
+<div class="geolocation-container loading" ng-class="{'loading':geolocation.loading}">
+  <div class="loader-container">
+    <div class="loader">Just a sec...</div>
+  </div>
+
+  <p>Navigate the map and select your event location:</p>
+  <p ng-if="geolocation.selectedAddress">Would you like to set <strong>{{geolocation.selectedAddress.formatted_address}}</strong> as your event location?</p>
+  <p ng-if="geolocation.error">Sorry, we seem to have encountered the following error: <strong>{{geolocation.error}}</strong>. Please try again or contact the administrator.</p>
+  <map center='current-position' geo-fallback-center="[40.74, -74.18]" on-click="geolocation.clickHandler($event)"></map>
+</div>

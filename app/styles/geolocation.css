@@ -1,0 +1,48 @@
+.geolocation-container {
+  position: relative;
+}
+
+.geolocation-container.loading {
+  pointer-events: none;
+}
+.geolocation-container.loading .loader-container {
+  pointer-events: all;
+  opacity: 1;
+  transform: scale(1);
+}
+
+.geolocation-container.loading p {
+  opacity: 0;
+  transform: scale(1, 0);
+}
+
+.geolocation-container p {
+  transition: all 300ms ease-in-out;
+}
+
+.geolocation-container.loading map {
+  opacity: 0.2;
+  transform: scale(0.9);
+}
+.geolocation-container map {
+  transition: all 300ms ease-in-out;
+}
+
+.geolocation-container .loader-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  transition: all 300ms ease-in-out;
+
+  pointer-events: none;
+  opacity: 0;
+  transform: scale(0.001);
+}
+.geolocation-container .loader {
+  position: absolute;
+  top: calc(50% - 81px);
+  left: calc(50% - 45px);
+}

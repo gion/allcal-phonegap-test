@@ -40,6 +40,11 @@ angular
         controller: 'AlarmCtrl',
         controllerAs: 'alarm'
       })
+      .when('/geolocation', {
+        templateUrl: 'views/geolocation.html',
+        controller: 'GeolocationCtrl',
+        controllerAs: 'geolocation'
+      })
       .otherwise({
         redirectTo: '/'
       });
