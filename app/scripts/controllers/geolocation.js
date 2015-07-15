@@ -12,15 +12,6 @@ angular.module('allcalPhonegapTestApp')
     var geolocation = this,
         timeout;
 
-
-    var map;
-    function initialize() {
-      map = new google.maps.Map(document.getElementById('map-canvas'), {
-        zoom: 8,
-        center: {lat: -34.397, lng: 150.644}
-      });
-    }
-
     geolocation.loading = true;
     geolocation.error = null;
     geolocation.selectedAddress = null;
@@ -51,7 +42,7 @@ angular.module('allcalPhonegapTestApp')
     function init() {
       console.log('phonegap reaaaaady!');
 
-      initialize();
+      $scope.mapsLoaded = true;
 
       $scope.$on('mapInitialized', function(event, map) {
         geolocation.map = map;
@@ -73,5 +64,35 @@ angular.module('allcalPhonegapTestApp')
       });
     };
 
-    phonegapReady(init);
+    (function (global) {
+      "use strict";
+
+      var apiKey = 'AIzaSyB5a-L4dpBaneZ2oKfasJFWYw1-ez-wdP4';
+
+      function onDeviceReady () {
+        document.addEventListener("online", onOnline, false);
+        document.addEventListener("resume", onResume, false);
+        loadMapsApi();
+      }
+
+      function onOnline () {
+        loadMapsApi();
+      }
+
+      function onResume () {
+        loadMapsApi();
+      }
+
+      function loadMapsApi () {
+        if(navigator.connection.type === Connection.NONE || google.maps) {
+          return;
+        }
+        $.getScript('https://maps.googleapis.com/maps/api/js?key='+ apiKey +'&sensor=true&callback=onMapsApiLoaded');
+      }
+
+      global.onMapsApiLoaded = init;
+
+      document.addEventListener("deviceready", onDeviceReady, false);
+    })(window);
+
   });
