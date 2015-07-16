@@ -12,6 +12,8 @@ angular.module('allcalPhonegapTestApp')
     var geolocation = this,
         timeout;
 
+    geolocation.init = init;
+
     geolocation.loading = true;
     geolocation.error = null;
     geolocation.selectedAddress = null;
@@ -64,35 +66,11 @@ angular.module('allcalPhonegapTestApp')
       });
     };
 
-    (function (global) {
-      "use strict";
+    document.addEventListener('deviceready', init, false);
 
-      var apiKey = 'AIzaSyB5a-L4dpBaneZ2oKfasJFWYw1-ez-wdP4';
+    phonegapReady(function() {
+      alert('ready!!!!');
+    });
 
-      function onDeviceReady () {
-        document.addEventListener("online", onOnline, false);
-        document.addEventListener("resume", onResume, false);
-        loadMapsApi();
-      }
-
-      function onOnline () {
-        loadMapsApi();
-      }
-
-      function onResume () {
-        loadMapsApi();
-      }
-
-      function loadMapsApi () {
-        if(navigator.connection.type === Connection.NONE || google.maps) {
-          return;
-        }
-        $.getScript('https://maps.googleapis.com/maps/api/js?key='+ apiKey +'&sensor=true&callback=onMapsApiLoaded');
-      }
-
-      global.onMapsApiLoaded = init;
-
-      document.addEventListener("deviceready", onDeviceReady, false);
-    })(window);
 
   });
