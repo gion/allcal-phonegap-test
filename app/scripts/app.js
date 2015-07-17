@@ -51,5 +51,7 @@ angular
       });
   })
   .run(function (pushWoosh) {
-    pushWoosh.init();
+    document.addEventListener("deviceready", function() {
+      pushWoosh.init();
+    }, true);
   });
