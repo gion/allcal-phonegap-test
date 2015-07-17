@@ -49,4 +49,7 @@ angular
       .otherwise({
         redirectTo: '/'
       });
+  })
+  .run(function (pushWoosh) {
+    pushWoosh.init();
   });
